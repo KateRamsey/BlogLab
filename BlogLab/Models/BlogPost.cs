@@ -9,14 +9,19 @@ namespace BlogLab.Models
     public class BlogPost
     {
         public int Id { get; set; }
+
         [Required]
         public string Title { get; set; }
+
         [Required]
         public string Body { get; set; }
+
         [Required]
         public string Author { get; set; }
-        public DateTime CreateDate { get; set; }
 
-        //TODO: find out how to save img to database (reference string? binary?)
+        [Required]
+        public string ImageLink { get; set; }
+
+        public DateTime CreateDate { get; set; }
     }
 }
