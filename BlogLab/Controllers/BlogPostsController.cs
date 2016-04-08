@@ -10,7 +10,7 @@ using BlogLab.Models;
 
 namespace BlogLab.Controllers
 {   
-    //[RoutePrefix("home")]
+    [RoutePrefix("home")]
     public class BlogPostsController : Controller
     {
         private BlogDBContext db = new BlogDBContext();
@@ -43,12 +43,11 @@ namespace BlogLab.Controllers
         }
 
         // POST: BlogPosts/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Body,Author,CreateDate")] BlogPost blogPost)
+        public ActionResult Create([Bind(Include = "Title,Body,Author,ImageLink")] BlogPost blogPost)
         {
+            blogPost.CreateDate = DateTime.Now;
             if (ModelState.IsValid)
             {
                 db.BlogPosts.Add(blogPost);
@@ -56,7 +55,7 @@ namespace BlogLab.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(blogPost);
+             return View(blogPost);
         }
 
         // GET: BlogPosts/Edit/5
@@ -75,19 +74,28 @@ namespace BlogLab.Controllers
         }
 
         // POST: BlogPosts/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Body,Author,CreateDate")] BlogPost blogPost)
+        public ActionResult Edit([Bind(Include = "Id,Title,Body,Author,ImageLink")] BlogPost blogPost)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                db.Entry(blogPost).State = EntityState.Modified;
-                db.SaveChanges();
+                return View(blogPost);   
+            }
+
+            BlogPost dbBlogPost = db.BlogPosts.Find(blogPost.Id);
+            if (dbBlogPost == null)
+            {
                 return RedirectToAction("Index");
             }
-            return View(blogPost);
+
+            dbBlogPost.ImageLink = blogPost.ImageLink;
+            dbBlogPost.Author = blogPost.Author;
+            dbBlogPost.Body = blogPost.Body;
+            dbBlogPost.Title = blogPost.Title;
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         // GET: BlogPosts/Delete/5

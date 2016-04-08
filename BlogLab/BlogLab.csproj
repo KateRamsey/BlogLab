@@ -134,6 +134,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604081458195_InitialCreate.cs" />
+    <Compile Include="Migrations\201604081458195_InitialCreate.Designer.cs">
+      <DependentUpon>201604081458195_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604081521011_initialMigration.cs" />
+    <Compile Include="Migrations\201604081521011_initialMigration.Designer.cs">
+      <DependentUpon>201604081521011_initialMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BlogPost.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -188,6 +197,14 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201604081458195_InitialCreate.resx">
+      <DependentUpon>201604081458195_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604081521011_initialMigration.resx">
+      <DependentUpon>201604081521011_initialMigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
