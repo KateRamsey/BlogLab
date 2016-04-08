@@ -26,3 +26,9 @@ textarea {
 .surfheader {
     background-color: lightskyblue;
 }
+
+#footer{
+	background-color: #1D5894;
+	min-height: 50px;
+    width: 100%;
+}
