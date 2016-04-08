@@ -10,7 +10,6 @@ using BlogLab.Models;
 
 namespace BlogLab.Controllers
 {   
-    [RoutePrefix("home")]
     public class BlogPostsController : Controller
     {
         private BlogDBContext db = new BlogDBContext();
