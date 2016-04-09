@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.UI.HtmlControls;
 
 namespace BlogLab.Models
 {
@@ -20,6 +21,7 @@ namespace BlogLab.Models
         public string Author { get; set; }
 
         [Required]
+        //TODO: Find way to validate that this is a link using an attribute
         public string ImageLink { get; set; }
 
         public DateTime CreateDate { get; set; }

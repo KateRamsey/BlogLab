@@ -17,7 +17,8 @@ namespace BlogLab.Controllers
         // GET: BlogPosts
         public ActionResult Index()
         {
-            return View(db.BlogPosts.ToList());
+            List<BlogPost> LatestFivePosts = new List<BlogPost>(db.BlogPosts.ToList().OrderByDescending(f => f.CreateDate)).GetRange(0,5);
+            return View(LatestFivePosts);
         }
 
         // GET: BlogPosts/Details/5
