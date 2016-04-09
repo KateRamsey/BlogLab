@@ -1,15 +1,13 @@
 ﻿@model IEnumerable<BlogLab.Models.BlogPost>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Surf and Paddle Blog";
 }
-
-<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+@*<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Title)
@@ -27,9 +25,18 @@
             Image
         </th>
         <th></th>
-    </tr>
+    </tr>*@
 
-@foreach (var item in Model) {
+<h3 class="currentposttitle col-md-6 col-md-offset-1">@Model.First().Title</h3>
+<h6 class="currentpostauthor col-md-6 col-md-offset-1">@Model.First().Author</h6>
+<h6 class="currentpostdate col-md-6 col-md-offset-1">@Model.First().CreateDate</h6>
+<img class="currentpostimg col-md-6 col-md-offset-1"src=@Model.First().ImageLink />
+<div class="currentpostcontent col-md-6 col-md-offset-1">@Model.First().Body</div>
+
+
+
+
+@*@foreach (var item in Model) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Title)
@@ -46,12 +53,8 @@
         <th>
             <img src=@item.ImageLink/>
         </th>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
+
     </tr>
 }
 
-</table>
+</table>*@
