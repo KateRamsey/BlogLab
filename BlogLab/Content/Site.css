@@ -32,3 +32,42 @@ textarea {
 	min-height: 50px;
     width: 100%;
 }
+#blog{
+	background-color: #61A1CE;
+	position: relative;
+	font-size: 2em;
+}
+
+.blogimg{
+	height: 200px;
+	width: 200px;
+	position: relative;
+	float:left;
+	margin-right: -30px;
+	padding: -15px;
+    overflow: hidden;
+}
+.blogimgname
+{
+	color: black;
+	position: absolute;
+	bottom: 0;
+	left:0;
+	font-size: 2rem;
+}
+
+.blogimgoverlay
+{
+	height: 200px;
+	width: 200px;
+	background-color: #61A1CE;
+	opacity: .5;
+	color: white;
+	position: absolute;
+	top: 0;
+	left: 0;
+
+}
+.blogimgoverlay:hover {
+	opacity: 0;
+}

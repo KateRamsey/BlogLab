@@ -26,35 +26,52 @@
         </th>
         <th></th>
     </tr>*@
+<div class="container-fluid" id="content">
+    <h3 class="currentposttitle col-md-6 col-md-offset-1">@Model.First().Title</h3>
+    <h6 class="currentpostauthor col-md-6 col-md-offset-1">@Model.First().Author</h6>
+    <h6 class="currentpostdate col-md-6 col-md-offset-1">@Model.First().CreateDate</h6>
+    <img class="currentpostimg col-md-6 col-md-offset-1" src=@Model.First().ImageLink />
+    <div class="currentpostcontent col-md-6 col-md-offset-1">@Model.First().Body</div>
+</div>
+    <hr />
 
-<h3 class="currentposttitle col-md-6 col-md-offset-1">@Model.First().Title</h3>
-<h6 class="currentpostauthor col-md-6 col-md-offset-1">@Model.First().Author</h6>
-<h6 class="currentpostdate col-md-6 col-md-offset-1">@Model.First().CreateDate</h6>
-<img class="currentpostimg col-md-6 col-md-offset-1"src=@Model.First().ImageLink />
-<div class="currentpostcontent col-md-6 col-md-offset-1">@Model.First().Body</div>
+    <div class="container-fluid" id="blog">
+        @foreach (var item in Model)
+        {
+            if (item != Model.First())
+            {
+                <div class="blogimg col-md-3 col-sm-12">
+                    <img src=@item.ImageLink class="img-responsive">
+                    <div class="blogimgname">@item.Title</div>
+                    <a href="/BlogPosts/" @item.Id>
+                        <div class="blogimgoverlay">
+                        </div>
+                    </a>
+                </div>
+            }
+        }
+    </div>
 
 
+    @*@foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Body)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreateDate)
+                </td>
+                <th>
+                    <img src=@item.ImageLink/>
+                </th>
 
+            </tr>
+        }
 
-@*@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Body)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Author)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreateDate)
-        </td>
-        <th>
-            <img src=@item.ImageLink/>
-        </th>
-
-    </tr>
-}
-
-</table>*@
+        </table>*@
