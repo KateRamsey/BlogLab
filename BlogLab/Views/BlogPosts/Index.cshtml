@@ -5,8 +5,9 @@
 }
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+@Html.ActionLink("Create New Post", "Create", null, new { @class= "btn btn-default" })
 </p>
+
 @* TODO: Text wrapping *@
 <div id="content">
     <h3 class="currentposttitle col-md-6 col-md-offset-1">@Model.First().Title</h3>
@@ -16,25 +17,25 @@
     <div class="currentpostcontent col-md-6 col-md-offset-1">@Model.First().Body</div>
     @Html.ActionLink("Read More", "Details", new { id = Model.First().Id })
 </div>
-    <hr style="clear:both"/>
+<hr style="clear:both" />
 
 <div id="nextposts" class="col-sm-12">Check out these other posts</div>
 <div class="container-fluid" id="blog">
-        @foreach (var item in Model)
-        {
+    @foreach (var item in Model)
+    {
 
-            if (item != Model.First())
-            {
-                string link = $"/BlogPosts/Details/{item.Id}";
-                <div class="blogimg col-md-3 col-sm-12">
-                    <img src=@item.ImageLink class="img-responsive">
-                    <div class="blogimgname">@item.Title</div>
-                    <a href=@link >
-                        <div class="blogimgoverlay">
-                        </div>
-                    </a>
-                </div>
-            }
+        if (item != Model.First())
+        {
+            string link = $"/BlogPosts/Details/{item.Id}";
+            <div class="blogimg col-md-3 col-sm-12">
+                <img src=@item.ImageLink class="img-responsive">
+                <div class="blogimgname">@item.Title</div>
+                <a href=@link>
+                    <div class="blogimgoverlay">
+                    </div>
+                </a>
+            </div>
         }
-    </div>
+    }
+</div>
 
