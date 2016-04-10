@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using BlogLab.Models;
 
 namespace BlogLab.Controllers
-{   
+{
     public class BlogPostsController : Controller
     {
         private BlogDBContext db = new BlogDBContext();
@@ -17,7 +17,7 @@ namespace BlogLab.Controllers
         // GET: BlogPosts
         public ActionResult Index()
         {
-            List<BlogPost> LatestFivePosts = new List<BlogPost>(db.BlogPosts.ToList().OrderByDescending(f => f.CreateDate)).GetRange(0,5);
+            List<BlogPost> LatestFivePosts = new List<BlogPost>(db.BlogPosts.ToList().OrderByDescending(f => f.CreateDate)).GetRange(0, 5);
             return View(LatestFivePosts);
         }
 
@@ -33,6 +33,26 @@ namespace BlogLab.Controllers
             {
                 return HttpNotFound();
             }
+            try
+            {
+                ViewBag.PrevPost =
+                    db.BlogPosts.Where(x => x.CreateDate < blogPost.CreateDate)
+                        .OrderByDescending(t => t.CreateDate)
+                        .First()
+                        .Id;
+            }
+            catch
+            {
+            }
+            try
+            {
+                ViewBag.NextPost =
+                    db.BlogPosts.Where(x => x.CreateDate > blogPost.CreateDate).OrderBy(t => t.CreateDate).First().Id;
+            }
+            catch (Exception)
+            {
+            }
+
             return View(blogPost);
         }
 
@@ -55,7 +75,7 @@ namespace BlogLab.Controllers
                 return RedirectToAction("Index");
             }
 
-             return View(blogPost);
+            return View(blogPost);
         }
 
         // GET: BlogPosts/Edit/5
@@ -80,7 +100,7 @@ namespace BlogLab.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(blogPost);   
+                return View(blogPost);
             }
 
             BlogPost dbBlogPost = db.BlogPosts.Find(blogPost.Id);
