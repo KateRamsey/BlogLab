@@ -3,29 +3,37 @@
 @{
     ViewBag.Title = @Model.Title;
 }
+<div class="row">
+    <div class="prevpost col-md-offset-1">
+        @if (ViewBag.PrevPost != null)
+        {
+            @Html.ActionLink("Previous Post", "Details", new { id = ViewBag.PrevPost }, new { @class = "btn btn-default" });
+        }
+    </div>
+    <div class="nextpost col-md-offset-10">
+        @if (ViewBag.NextPost != null)
+        {
+            @Html.ActionLink("Next Post", "Details", new { id = ViewBag.NextPost }, new { @class = "btn btn-default" })
+            ;
+        }
+
+    </div>
+</div>
+
 <div class="container body-content">
     <div id="content">
         <h3 class="currentposttitle col-md-6 col-md-offset-1">@Model.Title</h3>
         <h6 class="currentpostauthor col-md-6 col-md-offset-1">@Model.Author</h6>
         <h6 class="currentpostdate col-md-6 col-md-offset-1">@Model.CreateDate</h6>
-        <img class="currentpostimg col-md-6 col-md-offset-1" src=@Model.ImageLink />
-        <div class="currentpostcontent col-md-6 col-md-offset-1">@Model.Body</div>
+        <div class="row">
+            <div class="currentpostcontent col-md-6 col-md-offset-1">@Model.Body</div>
+            <img class="currentpostimg col-md-4 col-md-offset-7" src=@Model.ImageLink />
+        </div>
 
     </div>
     <hr style="clear:both" />
 
-    <div class="prevpost">
-        @if (ViewBag.PrevPost != null)
-        {
-            @Html.ActionLink("Previous Post", "Details", new { id = ViewBag.PrevPost });
-        }
-    </div>
-    <div class="nextpost">
-        @if (ViewBag.NextPost != null)
-        {
-            @Html.ActionLink("Next Post", "Details", new { id = ViewBag.NextPost });
-        }
-    </div>
+
 
 
     <p>
@@ -33,4 +41,4 @@
         @Html.ActionLink("Delete", "Delete", new { id = Model.Id }) |
         @Html.ActionLink("Home", "Index")
     </p>
-    </div>
+</div>

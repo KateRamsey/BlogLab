@@ -8,17 +8,24 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top surfheader">
-        <div class="container">
-            <div class="navbar-header">
-                @Html.ActionLink("Surf and Paddle Blog", "Index", "BlogPosts", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
+
+
+<div class="navbar navbar-inverse navbar-fixed-top surfheader" id="header">
+    <div class="background"></div>
+    <div class="overlay">
+        <div class="navbar-header" id="topbar">
+            @Html.ActionLink("Surf and Paddle Blog", "Index", "BlogPosts", new {area = ""}, new {@class = "navbar-brand"})
         </div>
+        <div id="subheader">
+            <div id="title">SURF & PADDLE CO.</div>
+            <div id="subtitle">An Ironyard Academy Project Est. Spring 2016</div>
+        </div>
+    </div>
     </div>
 
     @RenderBody()
 
-</div>
+
 <div id="footer">
     <footer class="container body-content">
         <p>&copy; @DateTime.Now.Year - Kate Ramsey </p>
