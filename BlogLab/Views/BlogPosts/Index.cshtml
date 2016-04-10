@@ -7,14 +7,14 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-
+@* TODO: Text wrapping *@
 <div id="content">
     <h3 class="currentposttitle col-md-6 col-md-offset-1">@Model.First().Title</h3>
     <h6 class="currentpostauthor col-md-6 col-md-offset-1">@Model.First().Author</h6>
     <h6 class="currentpostdate col-md-6 col-md-offset-1">@Model.First().CreateDate</h6>
     <img class="currentpostimg col-md-6 col-md-offset-1" src=@Model.First().ImageLink />
     <div class="currentpostcontent col-md-6 col-md-offset-1">@Model.First().Body</div>
-   @*TODO: Figure out routing of this button @Html.ActionLink("Read More", "Details")*@
+    @Html.ActionLink("Read More", "Details", new { id = Model.First().Id })
 </div>
     <hr style="clear:both"/>
 
