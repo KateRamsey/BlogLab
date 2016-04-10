@@ -7,43 +7,29 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-@*<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Body)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Author)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreateDate)
-        </th>
-        <th>
-            Image
-        </th>
-        <th></th>
-    </tr>*@
-<div class="container-fluid" id="content">
+
+<div id="content">
     <h3 class="currentposttitle col-md-6 col-md-offset-1">@Model.First().Title</h3>
     <h6 class="currentpostauthor col-md-6 col-md-offset-1">@Model.First().Author</h6>
     <h6 class="currentpostdate col-md-6 col-md-offset-1">@Model.First().CreateDate</h6>
     <img class="currentpostimg col-md-6 col-md-offset-1" src=@Model.First().ImageLink />
     <div class="currentpostcontent col-md-6 col-md-offset-1">@Model.First().Body</div>
+   @*TODO: Figure out routing of this button @Html.ActionLink("Read More", "Details")*@
 </div>
-    <hr />
+    <hr style="clear:both"/>
 
-    <div class="container-fluid" id="blog">
+<div id="nextposts" class="col-sm-12">Check out these other posts</div>
+<div class="container-fluid" id="blog">
         @foreach (var item in Model)
         {
+
             if (item != Model.First())
             {
+                string link = $"/BlogPosts/Details/{item.Id}";
                 <div class="blogimg col-md-3 col-sm-12">
                     <img src=@item.ImageLink class="img-responsive">
                     <div class="blogimgname">@item.Title</div>
-                    <a href="/BlogPosts/" @item.Id>
+                    <a href=@link >
                         <div class="blogimgoverlay">
                         </div>
                     </a>
@@ -52,26 +38,3 @@
         }
     </div>
 
-
-    @*@foreach (var item in Model) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Body)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Author)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreateDate)
-                </td>
-                <th>
-                    <img src=@item.ImageLink/>
-                </th>
-
-            </tr>
-        }
-
-        </table>*@

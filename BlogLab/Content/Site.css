@@ -38,12 +38,19 @@ textarea {
 	font-size: 2em;
 }
 
+#nextposts{
+	font-size: 4em;
+	color: #1D5894;
+    text-align: center;
+    width: 100%;
+}
+
 .blogimg{
 	height: 200px;
 	width: 200px;
 	position: relative;
 	float:left;
-	margin-right: -30px;
+	/*margin-right: -30px;*/
 	padding: -15px;
     overflow: hidden;
 }
