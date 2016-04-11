@@ -4,16 +4,16 @@
     ViewBag.Title = @Model.Title;
 }
 <div class="row">
-    <div class="prevpost col-md-offset-1">
+    <div class="col-md-3 col-md-offset-1">
         @if (ViewBag.PrevPost != null)
         {
             @Html.ActionLink("Previous Post", "Details", new { id = ViewBag.PrevPost }, new { @class = "btn btn-default" });
         }
     </div>
-    <div class="nextpost col-md-offset-10">
+    <div class="col-md-2 col-md-offset-6 ">
         @if (ViewBag.NextPost != null)
         {
-            @Html.ActionLink("Next Post", "Details", new { id = ViewBag.NextPost }, new { @class = "btn btn-default" });
+            @Html.ActionLink("Next Post", "Details", new { id = ViewBag.NextPost }, new { @class = "btn btn-primary btn-sm" });
         }
 
     </div>
@@ -28,7 +28,7 @@
         <div>@Model.Body</div>
     </div>
     <div class="col-md-4">
-        <img class="currentpostimg " src=@Model.ImageLink />
+        <img class="img-responsive img-thumbnail" src=@Model.ImageLink />
     </div>
 </div>
 <hr style="clear:both" />
