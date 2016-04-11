@@ -2,26 +2,28 @@
 
 @{
     ViewBag.Title = "Surf and Paddle Blog";
+    var firstPost = Model.First();
 }
-<div class="container body-content">
-    <p>
-        @Html.ActionLink("Create New Post", "Create", null, new { @class = "btn btn-default" })
-    </p>
 
-    @* TODO: Text wrapping *@
-    <div id="content">
-        <h3 class="currentposttitle col-md-6 col-md-offset-1">@Model.First().Title</h3>
-        <h6 class="currentpostauthor col-md-6 col-md-offset-1">@Model.First().Author</h6>
-        <h6 class="currentpostdate col-md-6 col-md-offset-1">@Model.First().CreateDate</h6>
-        <div class="currentpostcontent col-md-6 col-md-offset-1">@Model.First().Body</div>
-        <img class="currentpostimg col-md-4 col-md-offset-7" src=@Model.First().ImageLink />
 
-        @Html.ActionLink("Read More", "Details", new { id = Model.First().Id })
+<div id="content" class="row">
+    <div class="col-md-6 col-md-offset-1">
+
+        <h3>@firstPost.Title</h3>
+        <h6>@firstPost.Author</h6>
+        <h6>@firstPost.CreateDate</h6>
+        <div>@firstPost.Body</div>
     </div>
-    <hr style="clear: both" />
+    <div class="col-md-4"> <img src=@firstPost.ImageLink /></div>
 
-    <div id="nextposts" class="col-sm-12">Check out these other posts</div>
+
+    @Html.ActionLink("Read More", "Details", new { id = firstPost.Id })
 </div>
+<hr style="clear: both" />
+<p>
+    @Html.ActionLink("Create New Post", "Create", null, new { @class = "btn btn-default" })
+</p>
+<div id="nextposts" class="col-sm-12">Check out these other posts</div>
 
 <div class="container-fluid" id="blog">
     @foreach (var item in Model)
@@ -29,6 +31,7 @@
         if (item != Model.First())
         {
             string link = $"/BlogPosts/Details/{item.Id}";
+            // string link2 = Html.ur
             <div class="blogimg col-md-3 col-sm-12">
                 <img src=@item.ImageLink class="img-responsive">
                 <div class="blogimgname">@item.Title</div>
