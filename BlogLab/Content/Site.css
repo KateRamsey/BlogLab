@@ -148,3 +148,11 @@ textarea {
 	color: white;
 	text-align:center;
 }
+
+.form-horizontal, .form-actions {
+    margin-bottom: 20px;
+}
+
+.delete {
+    color: darkred;
+}

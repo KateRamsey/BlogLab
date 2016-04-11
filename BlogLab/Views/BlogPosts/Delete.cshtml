@@ -5,36 +5,44 @@
 }
 
 
-    <h2>Delete</h2>
+<h2 class="delete col=col-md-2 col-md-offset-1">Delete</h2>
 
-    <h3>Are you sure you want to delete this?</h3>
-    <div>
+<h3 class="col=col-md-2 col-md-offset-1">Are you sure you want to delete this?</h3>
+<div>
 
-        <div id="content">
-            <h3 class="currentposttitle col-md-6 col-md-offset-1">@Model.Title</h3>
-            <h6 class="currentpostauthor col-md-6 col-md-offset-1">@Model.Author</h6>
-            <h6 class="currentpostdate col-md-6 col-md-offset-1">@Model.CreateDate</h6>
-            <img class="currentpostimg col-md-6 col-md-offset-1" src=@Model.ImageLink />
-            @if (Model.Body.Length <= 300)
-            {
-                <div class="currentpostcontent col-md-6 col-md-offset-1">@Model.Body</div>
-            }
-            else
-            {
-                <div class="currentpostcontent col-md-6 col-md-offset-1">@Model.Body.Substring(0, 300)<span>...</span></div>
-            }
-
-        </div>
-        <hr style="clear:both" />
-
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-
-            <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-default" /> |
-                @Html.ActionLink("Back to List", "Index")
+    <div id="content" class="row">
+        <div class="col-md-6 col-md-offset-1">
+            <div class="row">
+                <h3>@Model.Title</h3>
+                <h6>@Model.Author</h6>
+                <h6>@Model.CreateDate</h6>
+                @if (Model.Body.Length <= 300)
+                {
+                    <div class="col-md-12">@Model.Body</div>
+                }
+                else
+                {
+                    <div class="col-md-12">@Model.Body.Substring(0, 300)<span>...</span></div>
+                }
             </div>
-        }
+        </div>
+        <div class="col-md-4">
+            <img class="img-responsive img-thumbnail" src=@Model.ImageLink />
+        </div>
     </div>
+
+
+</div>
+<hr style="clear:both" />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color col-md-6 col-md-offset-1">
+        <input type="submit" value="Delete" class="btn btn-danger btn-lg" /> 
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary btn-sm" })
+    </div>
+}
+
 

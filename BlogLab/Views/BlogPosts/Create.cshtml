@@ -56,9 +56,9 @@
         </div>
     }
 
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
+    <p class="col-md-2 col-md-offset-1">
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary btn-sm" })
+    </p>
 
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
