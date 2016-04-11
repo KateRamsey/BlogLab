@@ -48,6 +48,7 @@ textarea {
 	color: #1D5894;
     text-align: center;
     width: 100%;
+    margin-bottom: 8px;
 }
 
 .blogimg{
@@ -55,17 +56,17 @@ textarea {
 	width: 300px;
 	position: relative;
 	float:left;
-	/*margin-right: -30px;*/
 	padding: -15px;
     overflow: hidden;
 }
 .blogimgname
 {
-	color: black;
+	color: white;
+    text-shadow: 2px 2px black;
 	position: absolute;
 	bottom: 0;
 	left:0;
-	font-size: 2rem;
+	font-size: 3rem;
 }
 
 .blogimgoverlay
@@ -98,7 +99,7 @@ textarea {
 	margin-right: -15px;	
 	background-image: url("../img/headerimage.jpg");
 	background-color: #1D5894;
-	min-height: 400px;
+	min-height: 250px;
 	padding-right:20px;
 	padding-left: 20px;
 	padding-top: 5px;
@@ -109,7 +110,7 @@ textarea {
 
 .background:before {
 	width: 100%;
-	height: 400px;
+	height: 250px;
 	content: '';
 	position: absolute;
 	top: 0;
@@ -129,7 +130,7 @@ textarea {
 
 #subheader{
 	width: 100%;
-	margin-top: 80px;
+	margin-top: 45px;
 	display: flex;             
     flex-direction: column;
     justify-content: center; 

@@ -7,7 +7,7 @@
     <div class="col-md-3 col-md-offset-1">
         @if (ViewBag.PrevPost != null)
         {
-            @Html.ActionLink("Previous Post", "Details", new { id = ViewBag.PrevPost }, new { @class = "btn btn-default" });
+            @Html.ActionLink("Previous Post", "Details", new { id = ViewBag.PrevPost }, new { @class = "btn btn-primary btn-sm" });
         }
     </div>
     <div class="col-md-2 col-md-offset-6 ">
@@ -22,10 +22,12 @@
 
 <div id="content" class="row">
     <div class="col-md-6 col-md-offset-1">
-        <h3>@Model.Title</h3>
-        <h6>@Model.Author</h6>
-        <h6>@Model.CreateDate</h6>
-        <div>@Model.Body</div>
+        <div class="row">
+            <h3>@Model.Title</h3>
+            <h6>@Model.Author</h6>
+            <h6>@Model.CreateDate</h6>
+            <div class="col-md-12">@Model.Body</div>
+        </div>
     </div>
     <div class="col-md-4">
         <img class="img-responsive img-thumbnail" src=@Model.ImageLink />
@@ -34,8 +36,8 @@
 <hr style="clear:both" />
 
 
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Delete", "Delete", new { id = Model.Id }) |
-    @Html.ActionLink("Home", "Index")
+<p class="col-md-6 col-md-offset-1">
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning btn-sm" }) 
+    @Html.ActionLink("Delete", "Delete", new { id = Model.Id }, new { @class = "btn btn-danger btn-sm" }) 
+    @Html.ActionLink("Home", "Index",null, new { @class = "btn btn-primary btn-sm" })
 </p>

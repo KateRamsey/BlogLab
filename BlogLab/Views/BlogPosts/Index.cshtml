@@ -15,33 +15,32 @@
         <div>@firstPost.Body</div>
         @Html.ActionLink("Read More", "Details", new { id = firstPost.Id })
     </div>
-    <div class="col-md-4"> <img class="img-responsive" src=@firstPost.ImageLink /></div>
+    <div class="col-md-4"> <img class="img-responsive img-thumbnail" src=@firstPost.ImageLink /></div>
 
 
 
 </div>
+<div>
+    <p class="col-md-1 col-md-offset-1">
+        @Html.ActionLink("Create New Post", "Create", null, new { @class = "btn btn-success" })
+    </p>
+</div>
 <hr style="clear: both" />
-<p>
-    @Html.ActionLink("Create New Post", "Create", null, new { @class = "btn btn-default" })
-</p>
 <div id="nextposts" class="col-sm-12">Check out these other posts</div>
 
 <div class="container-fluid" id="blog">
-    @foreach (var item in Model)
+    @foreach (var item in Model.Skip(1))
     {
-        if (item != Model.First())
-        {
             string link = $"/BlogPosts/Details/{item.Id}";
             // string link2 = Html.ur
             <div class="blogimg col-md-3 col-sm-12">
-                <img src=@item.ImageLink class="img-responsive">
+                <img src=@item.ImageLink class="img-responsive img-thumbnail">
                 <div class="blogimgname">@item.Title</div>
                 <a href=@link>
                     <div class="blogimgoverlay">
                     </div>
                 </a>
             </div>
-        }
     }
 </div>
 
